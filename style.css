@@ -1153,21 +1153,30 @@ button{
 }
 
 /* ==================================================
-   AJUSTE WHATSAPP FLOAT (MOBILE)
-   - Evita conflito com Sticky CTA
-   - Melhora UX no mobile
+   FIX DEFINITIVO: WHATS FLUTUANTE NÃO SOBREPOR STICKY CTA
+   - Samsung M54 e outros celulares
+   - Independe da largura (usa detecção de toque)
 ================================================== */
 
-/* Desktop e Tablet continuam iguais */
-@media (min-width: 576px){
-  .wa-float{
-    display: inline-flex;
+/* 1) Em dispositivos de toque (celulares/tablets), some o botão flutuante */
+@media (hover: none) and (pointer: coarse){
+  .wa-float,
+  .whats-float{
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
   }
 }
 
-/* Mobile: remove botão flutuante do Whats */
-@media (max-width: 575.98px){
-  .wa-float{
-    display: none !important; /* 🔥 remove o incômodo */
+/* 2) Segurança extra: em telas até tablet (991.98px), também some */
+@media (max-width: 991.98px){
+  .wa-float,
+  .whats-float{
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
   }
 }
+
