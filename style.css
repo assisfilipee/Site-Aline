@@ -16,12 +16,17 @@
 
 /* ==================================================
    RESET + BASE
+   - remove scroll horizontal
+   - melhora legibilidade em telas pequenas
 ================================================== */
 *,
 *::before,
 *::after{ box-sizing: border-box; }
 
-html{ scroll-behavior: smooth; }
+html{
+  scroll-behavior: smooth;
+  overflow-x: hidden; /* ✅ evita scroll horizontal */
+}
 
 body{
   margin: 0;
@@ -30,11 +35,14 @@ body{
   background: var(--brand-soft);
   color: var(--text);
   line-height: 1.6;
+  overflow-x: hidden; /* ✅ evita scroll horizontal */
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
 }
 
 main{ position: relative; z-index: 1; }
 
-img{ max-width: 100%; display: block; }
+img{ max-width: 100%; display: block; height: auto; }
 
 a{ color: inherit; text-decoration: none; }
 
@@ -45,13 +53,27 @@ button{
   background: none;
 }
 
+/* ✅ garante que elementos “grandes” nunca estouram a viewport */
+.hero,
+.cta-image,
+.header,
+.container,
+.grid,
+.card,
+.ig-grid,
+.ig-card,
+.footer{
+  max-width: 100%;
+}
+
 /* ==================================================
    LAYOUT
+   - padding lateral garante “margem nos textos”
 ================================================== */
 .container{
   width: 100%;
   max-width: 1200px;
-  padding: 0 1rem;
+  padding: 0 1rem; /* base */
   margin: 0 auto;
 }
 
@@ -71,7 +93,7 @@ button{
 .section__text{
   max-width: 620px;
   color: var(--muted);
-  margin-bottom: 1rem;
+  margin: 0 0 1rem;
 }
 
 /* ==================================================
@@ -94,6 +116,7 @@ button{
 
 /* ==================================================
    NAV (fixa, transparente no topo, fundo ao rolar)
+   - sem mudar layout desktop
 ================================================== */
 .header{
   padding: 0.8rem 0;
@@ -165,6 +188,7 @@ button{
   gap: 5px;
   background: rgba(255,255,255,0.55);
   border: 1px solid var(--border);
+  flex-shrink: 0;
 }
 
 .nav__toggleBar{
@@ -184,7 +208,7 @@ button{
   min-height: 100vh;
   display: flex;
   align-items: center;
-  overflow: hidden;
+  overflow: hidden; /* ✅ segura qualquer overflow do showcase */
 }
 
 .hero__media{
@@ -207,18 +231,18 @@ button{
   z-index: -1;
 }
 
-/* 2 colunas */
+/* 2 colunas (desktop mantém como está) */
 .hero__inner{
   display: grid;
   grid-template-columns: 1.05fr .95fr;
-  gap: 2rem; /* mais próximo (antes 3rem) */
+  gap: 2rem;
   align-items: center;
 }
 
 .hero__content{ max-width: 680px; }
 
 .hero__kicker{
-  font-size: 0.95rem; /* maior */
+  font-size: 0.95rem;
   text-transform: uppercase;
   letter-spacing: 1px;
   opacity: 0.9;
@@ -226,7 +250,7 @@ button{
 }
 
 .hero__title{
-  font-size: clamp(2.8rem, 6.4vw, 3.9rem); /* maior */
+  font-size: clamp(2.8rem, 6.4vw, 3.9rem);
   line-height: 1.05;
   margin: 1rem 0;
 }
@@ -234,7 +258,7 @@ button{
 .hero__highlight{ color: rgba(31,31,31,0.65); }
 
 .hero__subtitle{
-  font-size: 1.05rem; /* maior */
+  font-size: 1.05rem;
   max-width: 56ch;
   color: rgba(31,31,31,0.78);
 }
@@ -243,6 +267,7 @@ button{
   display: flex;
   gap: 1rem;
   margin-top: 2rem;
+  flex-wrap: wrap; /* ✅ evita estourar linha em larguras intermediárias */
 }
 
 #inicio{ scroll-margin-top: 80px; }
@@ -253,11 +278,12 @@ button{
 .hero__showcase{
   display: flex;
   justify-content: flex-end;
-  margin-left: -0.75rem; /* aproxima mais */
+  margin-left: -0.75rem; /* desktop mantém */
+  min-width: 0;          /* ✅ evita overflow em grid */
 }
 
 .hero-slider{
-  width: min(430px, 100%); /* maior */
+  width: min(430px, 100%);
   aspect-ratio: 4 / 5;
   position: relative;
   border-radius: 22px;
@@ -354,6 +380,7 @@ button{
 
 /* ==================================================
    BOTÕES
+   - melhora toque no mobile via media queries (sem mexer no desktop)
 ================================================== */
 .btn{
   display: inline-flex;
@@ -364,6 +391,7 @@ button{
   font-weight: 600;
   border-radius: 10px;
   transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+  min-height: 44px; /* ✅ alvo mínimo pra toque */
 }
 
 .btn--primary{
@@ -389,7 +417,6 @@ button{
   transform: translateY(-1px);
 }
 
-
 /* ==================================================
    SEÇÃO ARTISTA — FUNDO BRANCO + CARDS ROSÉ
 ================================================== */
@@ -400,7 +427,6 @@ button{
 
 .section--artist .grid{ align-items: center; }
 
-/* coluna esquerda como flex vertical para alinhar “cards por baixo” */
 .section--artist .figure--artist{
   display: flex;
   flex-direction: column;
@@ -431,7 +457,6 @@ button{
   color: rgba(31,31,31,.6);
 }
 
-/* card da direita (rosé) */
 .section--artist .card{
   background: var(--brand-soft);
   border: 1px solid rgba(240,210,198,0.65);
@@ -462,9 +487,8 @@ button{
   transform: translateY(-1px);
 }
 
-/* card da frase (embaixo do @) */
 .section--artist .card--quote{
-  margin-top: auto;              /* empurra pro fundo */
+  margin-top: auto;
   padding: 1.4rem 1.6rem;
   width: 100%;
   max-width: 520px;
@@ -552,6 +576,7 @@ button{
   background: var(--brand);
   border: 1px solid rgba(31,31,31,0.18);
   font-weight: 600;
+  min-height: 44px; /* ✅ toque */
 }
 
 .ig-card__btn:hover{
@@ -559,7 +584,6 @@ button{
   transform: translateY(-1px);
 }
 
-/* toggle vídeo */
 .ig-video__toggle{
   position: absolute;
   right: 10px;
@@ -596,10 +620,19 @@ button{
   display: flex;
   gap: 1rem;
   margin-top: 0.5rem;
+  flex-wrap: wrap; /* ✅ evita estourar */
+  align-items: center;
+}
+
+.footer__credit{
+  margin-left: auto;
+  font-size: inherit;
+  color: inherit;
 }
 
 /* ==================================================
    WHATSAPP FLOAT — PREMIUM (ÚNICO)
+   - limita overflow e melhora toque
 ================================================== */
 .wa-float{
   position: fixed;
@@ -627,6 +660,7 @@ button{
   transition: transform .2s ease, box-shadow .2s ease;
 
   margin-bottom: 20px;
+  max-width: calc(100vw - 2rem); /* ✅ nunca estoura a viewport */
 }
 
 .wa-float:hover{
@@ -664,87 +698,7 @@ button{
 .skip-link:focus{ left: 12px; }
 
 /* ==================================================
-   MOBILE
-================================================== */
-@media (max-width: 768px){
-  body{ padding-bottom: 84px; }
-
-  .hero__cta{ flex-direction: column; }
-
-  .hero__inner{
-    grid-template-columns: 1fr;
-    gap: 1.75rem;
-  }
-
-  .hero__showcase{
-    justify-content: flex-start;
-    margin-left: 0;
-  }
-
-  .hero-slider{
-    width: 100%;
-    max-width: 520px;
-  }
-
-  .sticky-cta{
-    display: block;
-    position: fixed;
-    bottom: 0; left: 0;
-    width: 100%;
-    background: rgba(247,228,221,0.92);
-    backdrop-filter: blur(8px);
-    padding: 0.75rem;
-    z-index: 9997;
-    border-top: 1px solid rgba(31,31,31,0.10);
-  }
-
-  .sticky-cta__btn{
-    display: block;
-    width: 100%;
-    text-align: center;
-    background: var(--brand);
-    color: var(--text);
-    padding: 0.95rem;
-    border-radius: 10px;
-    font-weight: 900;
-    border: 1px solid rgba(31,31,31,0.18);
-  }
-
-  .nav__toggle{ display: inline-flex; }
-
-  .nav__menu{
-    position: absolute;
-    top: 64px;
-    right: 12px;
-    left: 12px;
-    display: grid;
-    gap: 0.75rem;
-    padding: 0.9rem;
-    border-radius: 14px;
-
-    background: rgba(255,255,255,0.82);
-    border: 1px solid rgba(31,31,31,0.12);
-    backdrop-filter: blur(12px);
-
-    transform: translateY(-8px);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.2s ease, transform 0.2s ease;
-  }
-
-  .header.is-open .nav__menu{
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-  }
-
-  .section--artist{ padding: 5rem 0; }
-  .section--artist .card--quote{ font-size: 1rem; }
-}
-
-/* ==================================================
    RESTAURA FINAL DO SITE (CTA + LOCALIZAÇÃO + MAPA)
-   Cole no FINAL do CSS
 ================================================== */
 
 /* CTA BAR */
@@ -760,6 +714,7 @@ button{
   gap: 1.5rem;
   align-items: center;
   grid-template-columns: 1.2fr .8fr;
+  min-width: 0; /* ✅ */
 }
 
 .cta-bar__title{
@@ -808,6 +763,7 @@ button{
   grid-template-columns: 1.2fr auto;
   align-items: center;
   gap: 2rem;
+  min-width: 0; /* ✅ */
 }
 
 .cta-image__content{ max-width: 720px; }
@@ -829,6 +785,7 @@ button{
   display: flex;
   gap: 1rem;
   justify-content: flex-end;
+  flex-wrap: wrap; /* ✅ evita estourar */
 }
 
 /* LOCALIZAÇÃO / CONTATO */
@@ -865,6 +822,7 @@ button{
   background: rgba(255,255,255,.60);
   border: 1px solid rgba(31,31,31,.12);
   transition: transform .2s ease, background .2s ease, border-color .2s ease;
+  min-width: 0; /* ✅ */
 }
 
 .contact-chip:hover{
@@ -892,6 +850,9 @@ button{
 .contact-chip__value{
   font-weight: 600;
   letter-spacing: .2px;
+  min-width: 0;                 /* ✅ */
+  overflow-wrap: anywhere;      /* ✅ quebra textos longos (email, etc.) */
+  word-break: break-word;
 }
 
 .contact-chip__icon svg{
@@ -938,17 +899,230 @@ button{
   display: block;
 }
 
-/* MOBILE */
-@media (max-width: 768px){
+/* ==================================================
+   RESPONSIVIDADE (BREAKPOINTS SOLICITADOS)
+   Regras:
+   - Desktop mantém exatamente como está
+   - Ajustes só em tablet/mobile
+   - Sem scroll horizontal + mais “respiro” lateral
+================================================== */
+
+/* ==================================================
+   EXTRA LARGE DEVICES: (min-width: 1200px)
+   - mantém o layout como já está (apenas pequenos “safety nets”)
+================================================== */
+@media (min-width: 1200px){
+  .container{ padding: 0 1rem; } /* mantém */
+}
+
+/* ==================================================
+   DESKTOP: (min-width: 992px) and (max-width: 1199.98px)
+   - mantém layout desktop, só garante respiro e evita overflow
+================================================== */
+@media (min-width: 992px) and (max-width: 1199.98px){
+  .container{ padding: 0 1rem; } /* mantém base */
+  .hero__showcase{ margin-left: -0.5rem; } /* micro ajuste sem mudar “identidade” */
+}
+
+/* ==================================================
+   TABLET: (min-width: 576px) and (max-width: 991.98px)
+   - empilha hero, melhora leitura, botões maiores
+================================================== */
+@media (min-width: 576px) and (max-width: 991.98px){
+  /* mais margem lateral pros textos */
+  .container{ padding: 0 1.25rem; }
+
+  /* seções um pouco mais compactas */
+  .section{ padding: 5rem 0; }
+
+  /* HERO em 1 coluna */
+  body{ padding-bottom: 84px; } /* espaço pro sticky-cta */
+  .hero__inner{
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+
+  .hero__cta{ flex-direction: column; }
+  .hero__cta .btn{ width: 100%; }
+
+  /* slider ocupa largura sem “puxar” */
+  .hero__showcase{
+    justify-content: flex-start;
+    margin-left: 0; /* ✅ remove negativo pra não criar overflow */
+  }
+
+  .hero-slider{
+    width: 100%;
+    max-width: 560px;
+  }
+
+  /* NAV mobile/tablet */
+  .nav__toggle{ display: inline-flex; }
+  .nav__menu{
+    position: absolute;
+    top: 64px;
+    right: 12px;
+    left: 12px;
+    display: grid;
+    gap: 0.75rem;
+    padding: 0.9rem;
+    border-radius: 14px;
+
+    background: rgba(255,255,255,0.82);
+    border: 1px solid rgba(31,31,31,0.12);
+    backdrop-filter: blur(12px);
+
+    transform: translateY(-8px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+  .header.is-open .nav__menu{
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  /* Sticky CTA */
+  .sticky-cta{
+    display: block;
+    position: fixed;
+    bottom: 0; left: 0;
+    width: 100%;
+    background: rgba(247,228,221,0.92);
+    backdrop-filter: blur(8px);
+    padding: 0.75rem;
+    z-index: 9997;
+    border-top: 1px solid rgba(31,31,31,0.10);
+  }
+  .sticky-cta__btn{
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: var(--brand);
+    color: var(--text);
+    padding: 0.95rem;
+    border-radius: 10px;
+    font-weight: 900;
+    border: 1px solid rgba(31,31,31,0.18);
+    min-height: 48px; /* ✅ toque */
+  }
+
+  /* artista */
+  .section--artist{ padding: 5.5rem 0; }
+  .figure--artist img{ width: 280px; height: 280px; }
+}
+
+/* ==================================================
+   MOBILE: (max-width: 575.98px)
+   - 1 coluna, respiro lateral maior, sem overflow, botões 100%
+================================================== */
+@media (max-width: 575.98px){
+  /* mais margem lateral */
+  .container{ padding: 0 1.1rem; }
+
+  /* seção mais compacta */
+  .section{ padding: 4.25rem 0; }
+
+  /* tipografia mais confortável sem “quebrar” identidade */
+  .section__subtitle{ font-size: 1.25rem; }
+  .section__text{ max-width: 100%; }
+
+  /* HERO */
+  body{ padding-bottom: 88px; } /* espaço pro sticky-cta */
+  .hero{ padding-top: 1.25rem; }
+  .hero__inner{
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .hero__title{
+    font-size: clamp(2.2rem, 8vw, 3.2rem);
+  }
+  .hero__cta{
+    flex-direction: column;
+    gap: .75rem;
+  }
+  .hero__cta .btn{
+    width: 100%;
+    padding: 1rem 1.2rem;
+    font-size: 1rem;
+    min-height: 48px;
+  }
+
+  /* slider sem negativo e com largura total */
+  .hero__showcase{
+    justify-content: flex-start;
+    margin-left: 0; /* ✅ remove negativo -> sem scroll horizontal */
+  }
+  .hero-slider{
+    width: 100%;
+    max-width: 520px;
+  }
+
+  /* NAV (menu dropdown) */
+  .nav__toggle{ display: inline-flex; }
+  .nav__menu{
+    position: absolute;
+    top: 64px;
+    right: 12px;
+    left: 12px;
+    display: grid;
+    gap: 0.75rem;
+    padding: 0.9rem;
+    border-radius: 14px;
+
+    background: rgba(255,255,255,0.82);
+    border: 1px solid rgba(31,31,31,0.12);
+    backdrop-filter: blur(12px);
+
+    transform: translateY(-8px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+  .header.is-open .nav__menu{
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  /* Sticky CTA */
+  .sticky-cta{
+    display: block;
+    position: fixed;
+    bottom: 0; left: 0;
+    width: 100%;
+    background: rgba(247,228,221,0.92);
+    backdrop-filter: blur(8px);
+    padding: 0.75rem;
+    z-index: 9997;
+    border-top: 1px solid rgba(31,31,31,0.10);
+  }
+  .sticky-cta__btn{
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: var(--brand);
+    color: var(--text);
+    padding: 1rem;
+    border-radius: 10px;
+    font-weight: 900;
+    border: 1px solid rgba(31,31,31,0.18);
+    min-height: 50px;
+  }
+
+  /* CTA BAR */
   .cta-bar__inner{ grid-template-columns: 1fr; }
   .cta-bar__actions{ justify-content: flex-start; }
   .cta-bar__actions .btn{ width: 100%; }
 
+  /* CTA IMAGEM */
   .cta-image{ min-height: 60vh; }
   .cta-image__inner{ grid-template-columns: 1fr; }
   .cta-image__actions{ flex-direction: column; }
   .cta-image__actions .btn{ width: 100%; }
 
+  /* contato chips (quebra segura) */
   .contact-chip{
     grid-template-columns: 34px 1fr;
     grid-template-areas:
@@ -956,26 +1130,44 @@ button{
       "i l";
     align-items: start;
   }
-
   .contact-chip__icon{ grid-area: i; }
   .contact-chip__value{ grid-area: v; }
   .contact-chip__label{ grid-area: l; }
 
   .contact-actions .btn{ width: 100%; }
 
+  /* mapa */
   .card--map iframe{ height: 320px; }
+
+  /* artista */
+  .section--artist{ padding: 5rem 0; }
+  .figure--artist img{ width: 240px; height: 240px; }
+  .section--artist .card--quote{ font-size: 1rem; }
+
+  /* Whats float nunca passa da tela */
+  .wa-float{
+    right: 0.75rem;
+    bottom: 0.75rem;
+    max-width: calc(100vw - 1.5rem);
+  }
 }
 
-.footer__links {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 16px;
+/* ==================================================
+   AJUSTE WHATSAPP FLOAT (MOBILE)
+   - Evita conflito com Sticky CTA
+   - Melhora UX no mobile
+================================================== */
+
+/* Desktop e Tablet continuam iguais */
+@media (min-width: 576px){
+  .wa-float{
+    display: inline-flex;
+  }
 }
 
-.footer__credit {
-  margin-left: auto; /* 🔥 empurra pro canto direito */
-  font-size: inherit;
-  color: inherit;
+/* Mobile: remove botão flutuante do Whats */
+@media (max-width: 575.98px){
+  .wa-float{
+    display: none !important; /* 🔥 remove o incômodo */
+  }
 }
-
