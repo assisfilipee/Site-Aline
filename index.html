@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Aline | Tattoo Artist</title>
+
+    <!-- SEO básico -->
+    <meta name="description"
+        content="Tatuagem autoral em [Cidade]. Agende pelo WhatsApp, veja portfólio e peça orçamento rápido. Atendimento com hora marcada e higienização." />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://seudominio.com.br/" />
+
+    <!-- Open Graph (WhatsApp/Instagram/LinkedIn) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Tatuagem autoral em [Cidade] | [Nome do Artista]" />
+    <meta property="og:description"
+        content="Portfólio + agendamento rápido pelo WhatsApp. Atendimento com hora marcada." />
+    <meta property="og:image" content="assets/og.jpg" />
+    <meta property="og:url" content="https://seudominio.com.br/" />
+
+    <!-- Pré-carregamento opcional (depois ajustamos no CSS) -->
+    <!-- <link rel="preload" href="assets/hero.webp" as="image" /> -->
+
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <!-- Skip link (acessibilidade + performance de navegação) -->
+    <a class="skip-link" href="#inicio">Pular para o conteúdo</a>
+
+    <!-- NAV (somente os itens pedidos) -->
+    <header class="header" id="topo">
+        <nav class="nav" aria-label="Navegação principal">
+            <div class="container nav__inner">
+
+                <button class="nav__toggle" type="button" aria-label="Abrir menu" aria-expanded="false"
+                    aria-controls="navMenu">
+                    <span class="nav__toggleBar"></span>
+                    <span class="nav__toggleBar"></span>
+                    <span class="nav__toggleBar"></span>
+                </button>
+
+                <div class="nav__menu" id="navMenu">
+                    <a class="nav__link" href="#inicio">Início</a>
+                    <a class="nav__link" href="#artista">Artista</a>
+
+                    <!-- MARCA CENTRAL -->
+                    <a class="nav__brand" href="#inicio" aria-label="Voltar ao início">
+                        <span class="nav__brandName">Aline</span>
+                        <span class="nav__brandTag">Tattoo Artist</span>
+                    </a>
+
+                    <a class="nav__link" href="#instagram">Portfólio</a>
+                    <a class="nav__link" href="#localizacao">Localização</a>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+
+
+    <main id="main">
+        <!-- HERO (INICIO) -->
+        <section id="inicio" class="hero" aria-label="Apresentação">
+            <div class="container hero__inner">
+                <div class="hero__content">
+                    <p class="hero__kicker">Especialista em Traço Fino • Sombreado Claro</p>
+
+                    <h1 class="hero__title">
+                        Arte delicada que marca <span class="hero__highlight">histórias na pela!</span>
+                    </h1>
+
+                    <p class="hero__subtitle">
+                        Traço fino, sombreados leves e tatuagens feitas com cuidado em cada detalhe.
+                    </p>
+
+                    <div class="hero__cta">
+                        <a class="btn btn--primary"
+                            href="https://wa.me/554896664165?text=Oi!%20Quero%20agendar%20uma%20tatuagem.%20Minha%20ideia%20%C3%A9:%20"
+                            target="_blank" rel="noopener">
+                            Agendar no WhatsApp
+                        </a>
+
+                        <a class="btn btn--ghost" href="https://www.instagram.com/aline.tattooink/"
+                            target="_blank">Agendar no Instagram</a>
+                    </div>
+                </div>
+
+                <!-- ✅ NOVO: Slider premium (lado direito) -->
+                <div class="hero__showcase" aria-label="Galeria de destaques">
+                    <div class="hero-slider" data-slider data-interval="4000">
+                        <div class="hero-slider__viewport">
+                            <!-- Troque os src pelas suas 5 imagens -->
+                            <img class="hero-slider__slide is-active" src="./img/local-00.webp" alt="Trabalho 1"
+                                loading="eager" decoding="async" />
+                            <img class="hero-slider__slide" src="./img/local-01.webp" alt="Trabalho 2" loading="lazy"
+                                decoding="async" />
+                            <img class="hero-slider__slide" src="./img/local-02.webp" alt="Trabalho 3" loading="lazy"
+                                decoding="async" />
+                            <img class="hero-slider__slide" src="./img/local-05.webp" alt="Trabalho 3" loading="lazy"
+                                decoding="async" />
+                            <img class="hero-slider__slide" src="./img/local-03.webp" alt="Trabalho 4" loading="lazy"
+                                decoding="async" />
+                            <img class="hero-slider__slide" src="./img/local-04.webp" alt="Trabalho 5" loading="lazy"
+                                decoding="async" />
+                        </div>
+
+                        <!-- detalhe premium (suave) -->
+                        <div class="hero-slider__shine" aria-hidden="true"></div>
+
+                        <!-- indicadores discretos -->
+                        <div class="hero-slider__dots" aria-hidden="true"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sticky CTA (mobile) - estilizamos no CSS -->
+            <div class="sticky-cta" role="region" aria-label="Agendamento rápido">
+                <a class="sticky-cta__btn"
+                    href="https://wa.me/554896664165?text=Oi!%20Quero%20agendar%20uma%20tatuagem.%20Minha%20ideia%20%C3%A9:%20"
+                    target="_blank" rel="noopener">
+                    Agendar no WhatsApp
+                </a>
+            </div>
+
+            <!-- Botão flutuante WhatsApp (Premium) -->
+            <a class="wa-float"
+                href="https://wa.me/554896664165?text=Oi!%20Quero%20agendar%20uma%20tatuagem.%20Minha%20ideia%20%C3%A9:%20"
+                target="_blank" rel="noopener" aria-label="Pedir orçamento no WhatsApp">
+                <img width="30" height="30" src="https://img.icons8.com/color/48/whatsapp--v1.png" alt="whatsapp--v1" />
+                <span>Orçamento</span>
+            </a>
+        </section>
+
+
+        <!-- ARTISTA -->
+        <section id="artista" class="section section--artist" aria-label="Artista">
+            <div class="container grid grid--2">
+                <div class="container grid grid--2 artist-grid">
+                    <figure class="figure figure--artist">
+                        <img src="./img/perfil.webp" alt="Foto da tatuadora Aline" loading="lazy" decoding="async"
+                            width="600" height="600" />
+                        <figcaption class="figure__caption">@aline.tattooink</figcaption>
+                    </figure>
+
+                    <div class="card card--quote">
+                        ❤️‍🔥 Arte em forma de tatuagem!
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2 class="section__title">Aline | Tattoo Artist</h2>
+                    <p class="section__text">
+                        Tatuadora especializada em traços finos e sombreados claros, com mais de 5 anos de experiência
+                        em projetos
+                        autorais e personalizados. Trabalho focado em técnica, precisão e respeito total ao cliente, do
+                        primeiro contato à sessão final.
+                    </p>
+
+                    <ul class="list">
+                        <li>✔️ Atendimento com hora marcada</li>
+                        <li>✔️ Orientação de cuidados + pós</li>
+                        <li>✔️ Materiais esterilizados/descartáveis</li>
+                        <li>✔️ Sinal para reservar horário (quando necessário)</li>
+                    </ul>
+
+                    <div class="hero__cta">
+                        <a class="btn btn--ghost" href="https://www.instagram.com/aline.tattooink/"
+                            target="_blank">Seguir no Instagram</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- INSTAGRAM (seção pedida no menu) -->
+            <section id="instagram" class="section section--instagram" aria-label="Instagram">
+                <div class="container">
+                    <div class="section-head section-head--instagram">
+                        <h2 class="section__title">Portfólio</h2>
+                        <span class="section-head__tag">Instagram</span>
+                    </div>
+
+                    <p class="section__text">
+                        Alguns trabalhos recentes. Clique para ver o post completo no Instagram.
+                    </p>
+
+                    <div class="ig-grid" aria-label="Portfólio do Instagram">
+
+                        <!-- CARD 1 (IMAGEM) -->
+                        <article class="ig-card">
+                            <div class="ig-card__media">
+                                <img src="./img/tattoo-01.webp" alt="Tatuagem feita pela tatuadora Aline" loading="lazy"
+                                    decoding="async" width="900" height="1100" />
+                            </div>
+
+                            <div class="ig-card__body">
+                                <p class="ig-card__text"></p>
+
+                                <a class="btn btn--ghost ig-card__btn" href="https://www.instagram.com/p/C5WuNijAZ2u/"
+                                    target="_blank" rel="noopener">
+                                    Ver no Instagram →
+                                </a>
+                            </div>
+                        </article>
+
+                        <!-- CARD 2 (IMAGEM) -->
+                        <article class="ig-card">
+                            <div class="ig-card__media">
+                                <img src="./img/tattoo-02.webp" alt="Tatuagem feita pela tatuadora Aline" loading="lazy"
+                                    decoding="async" width="900" height="1100" />
+                            </div>
+
+                            <div class="ig-card__body">
+                                <p class="ig-card__text"></p>
+
+                                <a class="btn btn--ghost ig-card__btn" href="https://www.instagram.com/p/DT_OoIpka8X/"
+                                    target="_blank" rel="noopener">
+                                    Ver no Instagram →
+                                </a>
+                            </div>
+                        </article>
+
+                        <!-- CARD 3 (IMAGEM) -->
+                        <article class="ig-card">
+                            <div class="ig-card__media">
+                                <img src="./img/tattoo-03.webp" alt="Tatuagem feita pela tatuadora Aline" loading="lazy"
+                                    decoding="async" width="900" height="1100" />
+                            </div>
+
+                            <div class="ig-card__body">
+                                <p class="ig-card__text"></p>
+
+                                <a class="btn btn--ghost ig-card__btn" href="https://www.instagram.com/p/DTyXsrekXAu/"
+                                    target="_blank" rel="noopener">
+                                    Ver no Instagram →
+                                </a>
+                            </div>
+                        </article>
+
+                        <!-- CARD 4 (IMAGEM) -->
+                        <article class="ig-card">
+                            <div class="ig-card__media">
+                                <img src="./img/tattoo-04.webp" alt="Tatuagem feita pela tatuadora Aline" loading="lazy"
+                                    decoding="async" width="900" height="1100" />
+                            </div>
+
+                            <div class="ig-card__body">
+                                <p class="ig-card__text"></p>
+
+                                <a class="btn btn--ghost ig-card__btn"
+                                    href="https://www.instagram.com/p/DSVrgkrlg44/?img_index=1" target="_blank"
+                                    rel="noopener">
+                                    Ver no Instagram →
+                                </a>
+                            </div>
+                        </article>
+
+                        <!-- CARD 5 (IMAGEM) -->
+                        <article class="ig-card">
+                            <div class="ig-card__media">
+                                <img src="./img/tattoo-05.webp" alt="Tatuagem feita pela tatuadora Aline" loading="lazy"
+                                    decoding="async" width="900" height="1100" />
+                            </div>
+
+                            <div class="ig-card__body">
+                                <p class="ig-card__text"></p>
+
+                                <a class="btn btn--ghost ig-card__btn"
+                                    href="https://www.instagram.com/p/DR0NNNyFmfJ/?img_index=1" target="_blank"
+                                    rel="noopener">
+                                    Ver no Instagram →
+                                </a>
+                            </div>
+                        </article>
+
+                        <!-- CARD 6 (IMAGEM) -->
+                        <article class="ig-card">
+                            <div class="ig-card__media">
+                                <img src="./img/tattoo-06.webp" alt="Tatuagem feita pela tatuadora Aline" loading="lazy"
+                                    decoding="async" width="900" height="1100" />
+                            </div>
+
+                            <div class="ig-card__body">
+                                <p class="ig-card__text"></p>
+
+                                <a class="btn btn--ghost ig-card__btn" href="https://www.instagram.com/p/DRdWTTzlmsr/"
+                                    target="_blank" rel="noopener">
+                                    Ver no Instagram →
+                                </a>
+                            </div>
+                        </article>
+
+                        <!-- CARD 7 (IMAGEM) -->
+                        <article class="ig-card">
+                            <div class="ig-card__media">
+                                <img src="./img/tattoo-07.webp" alt="Tatuagem feita pela tatuadora Aline" loading="lazy"
+                                    decoding="async" width="900" height="1100" />
+                            </div>
+
+                            <div class="ig-card__body">
+                                <p class="ig-card__text"></p>
+
+                                <a class="btn btn--ghost ig-card__btn" href="https://www.instagram.com/p/DRNkzg3EQUc/"
+                                    target="_blank" rel="noopener">
+                                    Ver no Instagram →
+                                </a>
+                            </div>
+                        </article>
+
+                        <!-- CARD 8 (IMAGEM) -->
+                        <article class="ig-card">
+                            <div class="ig-card__media">
+                                <img src="./img/tattoo-08.webp" alt="Tatuagem feita pela tatuadora Aline" loading="lazy"
+                                    decoding="async" width="900" height="1100" />
+                            </div>
+
+                            <div class="ig-card__body">
+                                <p class="ig-card__text"></p>
+
+                                <a class="btn btn--ghost ig-card__btn" href="https://www.instagram.com/p/DLBA2FuR0Oo/"
+                                    target="_blank" rel="noopener">
+                                    Ver no Instagram →
+                                </a>
+                            </div>
+                        </article>
+
+                        <!-- CARD 9 (IMAGEM) -->
+                        <article class="ig-card">
+                            <div class="ig-card__media">
+                                <img src="./img/tattoo-09.webp" alt="Tatuagem feita pela tatuadora Aline" loading="lazy"
+                                    decoding="async" width="900" height="1100" />
+                            </div>
+
+                            <div class="ig-card__body">
+                                <p class="ig-card__text"></p>
+
+                                <a class="btn btn--ghost ig-card__btn" href="https://www.instagram.com/p/DKFczlXxFxI/"
+                                    target="_blank" rel="noopener">
+                                    Ver no Instagram →
+                                </a>
+                            </div>
+                        </article>
+
+                        <!-- CARD 10 (IMAGEM) -->
+                        <article class="ig-card">
+                            <div class="ig-card__media">
+                                <img src="./img/tattoo-10.webp" alt="Tatuagem feita pela tatuadora Aline" loading="lazy"
+                                    decoding="async" width="900" height="1100" />
+                            </div>
+
+                            <div class="ig-card__body">
+                                <p class="ig-card__text"></p>
+
+                                <a class="btn btn--ghost ig-card__btn" href="https://www.instagram.com/p/DIUdrqiRVij/"
+                                    target="_blank" rel="noopener">
+                                    Ver no Instagram →
+                                </a>
+                            </div>
+                        </article>
+
+                    </div>
+
+                    <div class="mini-cta" style="margin-top: 1rem;">
+                        <a class="link" href="https://www.instagram.com/aline.tattooink/" target="_blank">Ver mais no
+                            Instagram →</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA ORÇAMENTO (com imagem de fundo) -->
+            <section id="orcamento" class="cta-image" aria-label="Orçamento">
+                <div class="cta-image__overlay"></div>
+
+                <div class="container cta-image__inner">
+
+                    <!-- TEXTO -->
+                    <div class="cta-image__content">
+                        <h3 class="cta-image__title">
+                            Pronto para sua próxima <span>tatuagem</span>?
+                        </h3>
+
+                        <p class="cta-image__text">
+                            Atendimento com hora marcada. Orçamento rápido e projeto personalizado.
+                        </p>
+                    </div>
+
+                    <!-- BOTÕES (FORA DO CONTENT) -->
+                    <div class="cta-image__actions">
+                        <a class="btn btn--primary"
+                            href="https://wa.me/554896664165?text=Oi!%20Quero%20agendar%20uma%20tatuagem.%20Minha%20ideia%20%C3%A9:%20"
+                            target="_blank" rel="noopener">
+                            Chamar no WhatsApp
+                        </a>
+
+                        <a class="btn btn--ghost" href="https://www.instagram.com/aline.tattooink/" target="_blank"
+                            rel="noopener">
+                            Chamar no Instagram
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+
+
+            <!-- LOCALIZAÇÃO + CONTATO -->
+            <section id="localizacao" class="section section--local" aria-label="Contato e localização">
+                <div class="container grid grid--2">
+                    <!-- CONTATO -->
+                    <div class="card">
+                        <h2 class="section__title">Localização e Contato</h2>
+
+                        <div class="contact-grid" aria-label="Informações de contato">
+                            <a class="contact-chip" href="https://maps.app.goo.gl/NuJ8RTZKLbd6myX7A" target="_blank"
+                                rel="noopener">
+                                <span class="contact-chip__icon" aria-hidden="true">📍</span>
+                                <span class="contact-chip__label">Cidade / Bairro</span>
+                                <span class="contact-chip__value">Palhoça • Centro</span>
+                            </a>
+
+                            <div class="contact-chip" role="group" aria-label="Horário de atendimento">
+                                <span class="contact-chip__icon" aria-hidden="true">🕒</span>
+                                <span class="contact-chip__label">Horário</span>
+                                <span class="contact-chip__value">Seg – Sáb • 9:00 – 19:00</span>
+                            </div>
+
+                            <a class="contact-chip contact-chip--wa"
+                                href="https://wa.me/554896664165?text=Oi!%20Quero%20agendar%20uma%20tatuagem.%20Minha%20ideia%20%C3%A9:%20"
+                                target="_blank" rel="noopener">
+                                <span class="contact-chip__icon contact-chip__icon--wa" aria-hidden="true">
+                                    <svg viewBox="0 0 32 32" width="18" height="18" fill="currentColor">
+                                        <path
+                                            d="M19.11 17.19c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.13-.42-2.15-1.35-.8-.71-1.34-1.59-1.5-1.86-.16-.27-.02-.42.12-.55.13-.13.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.46-.61-.47h-.52c-.18 0-.48.07-.73.34-.25.27-.95.93-.95 2.27 0 1.34.98 2.64 1.12 2.82.14.18 1.93 2.95 4.69 4.13.66.29 1.18.46 1.58.59.66.21 1.26.18 1.73.11.53-.08 1.6-.65 1.83-1.27.23-.61.23-1.14.16-1.25-.07-.11-.25-.18-.52-.32z" />
+                                        <path
+                                            d="M16 3C9.38 3 4 8.38 4 15c0 2.65.86 5.1 2.31 7.1L4 29l7.08-2.26C13.05 27.24 14.5 27.5 16 27.5c6.62 0 12-5.38 12-12S22.62 3 16 3zm0 22.5c-1.37 0-2.71-.26-3.96-.77l-.28-.11-4.2 1.34 1.36-4.09-.18-.3C7.93 19.98 7 17.54 7 15c0-4.96 4.04-9 9-9s9 4.04 9 9-4.04 9-9 9z" />
+                                    </svg>
+                                </span>
+                                <span class="contact-chip__label">WhatsApp</span>
+                                <span class="contact-chip__value">(48) 99666-4165</span>
+                            </a>
+
+                            <a class="contact-chip" href="https://www.instagram.com/aline.tattooink/" target="_blank"
+                                rel="noopener">
+                                <span class="contact-chip__icon contact-chip__icon--ig" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                                        <path
+                                            d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2c1.66 0 3 1.34 3 3v10c0 1.66-1.34 3-3 3H7c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h10zm-5 3.5A4.5 4.5 0 1 0 16.5 12 4.51 4.51 0 0 0 12 7.5zm0 7.4A2.9 2.9 0 1 1 14.9 12 2.9 2.9 0 0 1 12 14.9zM17.5 6.2a1.1 1.1 0 1 0 1.1 1.1 1.1 1.1 0 0 0-1.1-1.1z" />
+                                    </svg>
+                                </span>
+
+                                <span class="contact-chip__label">Instagram</span>
+                                <span class="contact-chip__value">@aline.tattooink</span>
+                            </a>
+                        </div>
+
+                        <div class="contact-actions">
+                            <a class="btn btn--primary"
+                                href="https://wa.me/554896664165?text=Oi!%20Quero%20agendar%20uma%20tatuagem.%20Minha%20ideia%20%C3%A9:%20"
+                                target="_blank" rel="noopener">
+                                Pedir orçamento no WhatsApp
+                            </a>
+
+                            <a class="btn btn--ghost" href="https://maps.app.goo.gl/NuJ8RTZKLbd6myX7A" target="_blank"
+                                rel="noopener">
+                                Abrir no Google Maps
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- MAPA -->
+                    <div class="card card--map">
+                        <div class="map" aria-label="Mapa do estúdio">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3534.3204552334323!2d-48.66897842453493!3d-27.645555476218018!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x952735b108140001%3A0x761eb3638a4dd61c!2sR.%20Caetano%20Silveira%20de%20Matos%2C%202668%20-%20Sala%20106%20-%20Centro%2C%20Palho%C3%A7a%20-%20SC%2C%2088130-005!5e0!3m2!1spt-PT!2sbr!4v1769812417088!5m2!1spt-PT!2sbr"
+                                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </section>
+    </main>
+
+    <footer class="footer" aria-label="Rodapé">
+        <div class="container footer__inner">
+            <p>© <span id="year">2026</span> Aline. Todos os direitos reservados.</p>
+
+            <p class="footer__fineprint">
+                Aviso: procedimentos seguem boas práticas de higiene e biossegurança.
+                Informações no site não substituem orientação profissional.
+            </p>
+
+            <div class="footer__links">
+                <a class="link" href="#inicio">Voltar ao início</a>
+                <a class="link" href="https://www.instagram.com/aline.tattooink/" target="_blank" rel="noopener">
+                    Instagram
+                </a>
+                <a class="link"
+                    href="https://wa.me/554896664165?text=Oi!%20Quero%20agendar%20uma%20tatuagem.%20Minha%20ideia%20%C3%A9:%20"
+                    target="_blank" rel="noopener">
+                    WhatsApp
+                </a>
+
+                <!-- NOVO: crédito de desenvolvimento -->
+                <span class="footer__credit">
+                    Desenvolvido por
+                    <a class="link" href="https://www.instagram.com/assisfilipee" target="_blank" rel="noopener">
+                        Filipe Assis
+                    </a>
+                </span>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="./script.js" defer></script>
+</body>
+
+</html>
